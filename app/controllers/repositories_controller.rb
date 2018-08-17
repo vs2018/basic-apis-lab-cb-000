@@ -12,11 +12,12 @@ class RepositoriesController < ApplicationController
           req.params['client_id'] = 2083946415a606cfb59b
           req.params['client_secret'] = 827b73b2c32fd31149eec8cb07196e0b1555ea5d
           req.params['q'] = params[:q]
-      
+
         end
         body = JSON.parse(@resp.body)
         if @resp.success?
-          @venues = body["response"]["venues"]
+          @name = body["items"]["name"]
+          @url = body["url"]
         else
           @error = body["meta"]["errorDetail"]
         end
